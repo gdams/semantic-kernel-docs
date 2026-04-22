@@ -111,3 +111,11 @@ If your application doesn't need the MCP Apps middleware layer, your Agent Frame
 - [Agent Framework GitHub Repository](https://github.com/microsoft/agent-framework)
 
 ::: zone-end
+
+
+::: zone pivot="programming-language-go"
+
+> [!NOTE]
+> Go support for this feature is coming soon. See the [Agent Framework Go repository](https://github.com/microsoft/agent-framework-go) for the latest status.
+
+::: zone-end
