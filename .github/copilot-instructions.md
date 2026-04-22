@@ -47,7 +47,7 @@ Java content here
 ::: zone-end
 ```
 
-**Agent Framework** (C#, Python, Go):
+**Agent Framework** (C#, Python, Go only - no Java):
 ```markdown
 ::: zone pivot="programming-language-csharp"
 C# content here
@@ -73,8 +73,6 @@ Reference code from external sample repositories using DocFX syntax:
 Sample repositories (configured in `.openpublishing.publish.config.json`):
 - `semantic-kernel-samples` → [microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel) (main branch)
 - `semantic-kernel-samples-java` → [microsoft/semantic-kernel-java](https://github.com/microsoft/semantic-kernel-java)
-- `agent-framework-code` → [microsoft/agent-framework](https://github.com/microsoft/agent-framework) (main branch)
-- `agent-framework-go` → [microsoft/agent-framework-go](https://github.com/microsoft/agent-framework-go) (main branch)
 
 ### Table of Contents
 
