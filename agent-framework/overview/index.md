@@ -92,9 +92,6 @@ That's it — an agent that calls an LLM and returns a response. From here you c
 :::zone-end
 
 :::zone pivot="programming-language-go"
-## Getting started with Go
-
-Install the framework:
 
 ```bash
 go get github.com/microsoft/agent-framework-go
