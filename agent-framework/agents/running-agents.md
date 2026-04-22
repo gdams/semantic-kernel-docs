@@ -5,7 +5,7 @@ zone_pivot_groups: programming-languages
 author: moonbox3
 ms.topic: reference
 ms.author: evmattso
-ms.date: 03/31/2026
+ms.date: 04/22/2026
 ms.service: agent-framework
 ---
 
@@ -334,6 +334,87 @@ for message in response.messages:
 
 ::: zone-end
 
+::: zone pivot="programming-language-go"
+## Streaming and non-streaming
+
+In Go, `RunText` returns a `ResponseStream` — an iterator of `(ResponseUpdate, error)` pairs.
+
+For non-streaming, call `Collect()` on the stream to gather all updates into a single response:
+
+```go
+resp, err := a.RunText(ctx, "What is the weather like in Amsterdam?").Collect()
+if err != nil {
+    panic(err)
+}
+fmt.Println(resp)
+```
+
+For streaming, iterate over the stream directly using a `range` loop:
+
+```go
+for update, err := range a.RunText(ctx, "What is the weather like in Amsterdam?", agentopt.Stream(true)) {
+    if err != nil {
+        panic(err)
+    }
+    fmt.Print(update)
+}
+```
+
+## Agent run options
+
+Options are passed as variadic `agentopt.Option` arguments. Available options include:
+
+- `agentopt.Stream(true)` — Enable streaming
+- `agentopt.Session(session)` — Attach a session for multi-turn conversations
+- `agentopt.StructuredOutput(&v)` — Request structured output into a typed value
+- `agentopt.ResponseFormat(format)` — Specify the response format
+- `agentopt.Tool(tool)` — Add a tool for this run
+- `agentopt.AllowBackgroundResponses(true)` — Enable background responses
+
+```go
+resp, err := a.RunText(ctx, "Tell me a joke.",
+    agentopt.Stream(true),
+    agentopt.Session(session),
+).Collect()
+```
+
+## Response types
+
+`ResponseStream` yields `*message.ResponseUpdate` values. Each update contains:
+
+- `Contents` — Slice of `message.Content` (text, function calls, usage, etc.)
+- `Role` — The message role (assistant, system, etc.)
+- `MessageID` / `ResponseID` — Identifiers for the message and response
+
+To get the full text result from a non-streaming response, use `Collect()`:
+
+```go
+resp, err := a.RunText(ctx, "What is the weather like in Amsterdam?").Collect()
+if err != nil {
+    panic(err)
+}
+fmt.Println(resp)
+```
+
+For streaming, process updates individually as they arrive:
+
+```go
+for update, err := range a.RunText(ctx, "Tell me a story.", agentopt.Stream(true)) {
+    if err != nil {
+        panic(err)
+    }
+    for _, c := range update.Contents {
+        if text, ok := c.(*message.TextContent); ok {
+            fmt.Print(text.Text)
+        }
+    }
+}
+```
+
+> [!TIP]
+> See the [full sample](https://github.com/microsoft/agent-framework-go/blob/main/examples/02-agents/agents/step01_running/main.go) for a complete runnable example.
+
+::: zone-end
 
 ## Next steps
 

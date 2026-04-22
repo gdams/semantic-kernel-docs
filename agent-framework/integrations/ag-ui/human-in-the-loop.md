@@ -1128,3 +1128,10 @@ def close_account(...): pass
 - [Function Tools with Approvals](../../agents/tools/tool-approval.md)
 
 ::: zone-end
+
+::: zone pivot="programming-language-go"
+
+> [!NOTE]
+> Go support for this feature is coming soon. See the [Agent Framework Go repository](https://github.com/microsoft/agent-framework-go) for the latest status.
+
+::: zone-end
