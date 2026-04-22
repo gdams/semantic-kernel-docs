@@ -82,15 +82,6 @@ pip install agent-framework
 ```
 :::zone-end
 
-That's it — an agent that calls an LLM and returns a response. From here you can [add tools](../agents/tools/index.md), [multi-turn conversations](../agents/conversations/session.md), [middleware](../agents/middleware/index.md), and [workflows](#when-to-use-agents-vs-workflows) to build production applications.
-
-:::zone pivot="programming-language-python"
-
-> [!NOTE]
-> Agent Framework does **not** automatically load `.env` files. To use a `.env` file, call `load_dotenv()` at the start of your application, or set environment variables directly in your shell or IDE.
-
-:::zone-end
-
 :::zone pivot="programming-language-go"
 
 ```bash
@@ -122,6 +113,16 @@ resp, err := a.RunText(ctx, "Hello!").Collect()
 For step-by-step tutorials, see the [Get Started guide](../get-started/your-first-agent.md).
 
 :::zone-end
+
+That's it — an agent that calls an LLM and returns a response. From here you can [add tools](../agents/tools/index.md), [multi-turn conversations](../agents/conversations/session.md), [middleware](../agents/middleware/index.md), and [workflows](#when-to-use-agents-vs-workflows) to build production applications.
+
+:::zone pivot="programming-language-python"
+
+> [!NOTE]
+> Agent Framework does **not** automatically load `.env` files. To use a `.env` file, call `load_dotenv()` at the start of your application, or set environment variables directly in your shell or IDE.
+
+:::zone-end
+
 > [!div class="nextstepaction"]
 > [Get Started — full tutorial](../get-started/your-first-agent.md)
 
